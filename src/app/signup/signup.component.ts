@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { AuthService, ProfileService } from '../core/';
-import { FirebaseAuth, AngularFire, FirebaseAuthState} from 'angularfire2';
+import { AngularFireAuth, AngularFire, FirebaseAuthState} from 'angularfire2';
 
 @Component({
   selector: 'app-signup',
