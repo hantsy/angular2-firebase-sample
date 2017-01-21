@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService, ProfileService } from '../core/';
-import { AngularFireAuth, AngularFire, FirebaseAuthState} from 'angularfire2';
+import { AngularFireAuth, AngularFire, FirebaseAuthState } from 'angularfire2';
+
+const emailValidator = Validators.pattern('^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$');
 
 @Component({
   selector: 'app-signup',
@@ -22,7 +24,7 @@ export class SignupComponent implements OnInit {
   constructor(private auth: AuthService, private profileService: ProfileService, private router: Router, private fb: FormBuilder) {
     this.firstName = new FormControl('', [Validators.required]);
     this.lastName = new FormControl('', [Validators.required]);
-    this.email = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]);
+    this.email = new FormControl('', [Validators.required, emailValidator]);
     this.password = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]);
     this.passwordConfirm = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]);
 
@@ -52,31 +54,27 @@ export class SignupComponent implements OnInit {
 
   submit() {
     console.log('saving signup form data@' + this.signupForm.value);
-    let value = this.signupForm.value;
-    let profileData = {
+    const value = this.signupForm.value;
+    const profileData = {
       firstName: value.firstName,
       lastName: value.lastName,
       email: value.email,
     };
 
-    let signUpData = {
+    const signUpData = {
       email: value.email,
       password: value.passwordGroup.password
     };
 
     this.auth.createUserWithEmailAndPassword(signUpData)
-      .then(
-       (user: FirebaseAuthState) =>{
-         console.log('signin @' + user);
-         this.profileService.save(profileData)
-           .then(
-             res => {
-               console.log(res);
-               this.router.navigate(['']);
-             }
-           );
-        }
-      );
+      .then((user: FirebaseAuthState) => {
+        console.log('signin @' + user);
+        this.profileService.save(profileData)
+          .then(res => {
+            console.log(res);
+            this.router.navigate(['']);
+          });
+      });
   }
 
 }
