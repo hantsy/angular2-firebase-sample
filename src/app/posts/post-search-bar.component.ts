@@ -6,7 +6,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./post-search-bar.component.css']
 })
 export class PostSearchBarComponent implements OnInit {
-  q: boolean = false;
+  active: boolean = false;
 
   @Output() toggleFilter = new EventEmitter();
 
@@ -17,8 +17,8 @@ export class PostSearchBarComponent implements OnInit {
   }
 
   onToggleFilter(){
-    this.q = !this.q;
-    this.toggleFilter.emit(this.q);
+    this.active = !this.active;
+    this.toggleFilter.emit(this.active);
   }
 
 }

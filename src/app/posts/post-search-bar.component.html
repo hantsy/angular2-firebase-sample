@@ -1,13 +1,17 @@
-Only show my posts:
-<label class="form-check-inline">
-  <input
-    type="checkbox"
-    name="q"
-    class="form-check-input"
-    [ngModel]="q"
-    (ngModelChange)="onToggleFilter()"/>
-</label>
-
-<span class="float-md-right">
-  <a class="btn btn-success" [routerLink]="['/posts', 'new']">new-post</a>
-</span>
+<div class="row">
+  <div class="col-md-6" >
+    <button
+      [appShowAuthed]="true"
+      type="button"
+      class="btn btn-lg"
+      [ngClass]="{'btn-primary':active}"
+      (click)="onToggleFilter()">
+      Only show my posts
+    </button>
+  </div>
+  <div class="col-md-6">
+    <div class="float-right">
+      <a class="btn btn-lg btn-success" [routerLink]="['/posts', 'new']"><i class="fa fa-plus-circle" aria-hidden="true"></i> {{'new-post'}}</a>
+    </div>
+  </div>
+</div>

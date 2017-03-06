@@ -74,6 +74,7 @@ export class PostService {
   createPost(title: string, content: string) {
     let _data: Post = { title: title, content: content };
     _data.createdBy = this.auth.id;
+    _data.createdAt = firebase.database['ServerValue']['TIMESTAMP'];
     return this.posts$.push(_data);
   }
 

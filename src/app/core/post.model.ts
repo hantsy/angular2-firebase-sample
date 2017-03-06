@@ -1,7 +1,7 @@
 export interface Post {
   $key?: string;
   createdBy?: string;
-  createdAt?: number;
+  createdAt?: any;
   title: string;
   content: string;
 }

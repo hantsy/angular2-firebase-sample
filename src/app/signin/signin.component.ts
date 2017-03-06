@@ -9,9 +9,9 @@ import { AuthService } from '../core/auth.service';
 })
 export class SigninComponent implements OnInit, OnDestroy {
 
-  data = { email: '', password: ''};
+  data: any = { email: '', password: '' };
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -19,7 +19,7 @@ export class SigninComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
-  signInWithEmailAndPassword(){
+  signInWithEmailAndPassword() {
     this.auth.signInWithEmailAndPassword(this.data)
       .then(() => this.postSignIn());
   }

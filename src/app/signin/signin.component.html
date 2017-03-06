@@ -1,34 +1,60 @@
-<div style="text-align:center">
-  <form #f="ngForm" id="form" name="form" class="form" (ngSubmit)="signInWithEmailAndPassword()" novalidate>
-    <!--<div class="form-group" [class.has-danger]="email.invalid && !email.pristine">-->
-    <div>
-      <mdl-textfield id="email" name="email" type="email" #email="ngModel" [(ngModel)]="data.email" required></mdl-textfield>
-    </div>
-    <!--<div class="form-control-feedback" *ngIf="email.invalid && !email.pristine">
-                <p *ngIf="email.errors.required">email is required</p>
-                <p *ngIf="email.errors.email">email format is invalid </p>
-              </div>-->
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3>Sign in wtih email and password</h3>
+      </div>
+      <div class="card-block">
+        <form #f="ngForm" id="form" name="form" class="form" (ngSubmit)="signInWithEmailAndPassword()" novalidate>
+          <div class="form-group" [class.has-danger]="email.invalid && !email.pristine">
+            <label class="form-control-label" for="email">{{'email'}}</label>
+            <input class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="data.email" required/>
+            <div class="form-control-feedback" *ngIf="email.invalid && !email.pristine">
+              <p *ngIf="email.errors.required">email is required</p>
+              <p *ngIf="email.errors.email">email format is invalid </p>
+            </div>
+          </div>
+          <div class="form-group" [class.has-danger]="password.invalid && !password.pristine">
+            <label class="form-control-label" for="password">{{'password'}}</label>
+            <input class="form-control" type="password" name="password" id="password" #password="ngModel" [(ngModel)]="data.password"
+              required/>
+            <div class="form-control-feedback" *ngIf="password.invalid && !password.pristine">
+              <p ng-message="password.errors.required">Password is required</p>
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-lg btn-block btn-success" [disabled]="f.invalid || f.pending">{{'signin'}}</button>
+          </div>
+        </form>
 
-    <div>
-      <mdl-textfield type="password" name="password" id="password" #password="ngModel" [(ngModel)]="data.password" required></mdl-textfield>
+        <div>
+          Not registered, <a [routerLink]="['', 'signup']">{{'signup'}}</a>
+        </div>
+      </div>
     </div>
-    <!--<div class="form-control-feedback" *ngIf="password.invalid && !password.pristine">
-                <p ng-message="password.errors.required">Password is required</p>
-              </div>-->
-    <div>
-      <button type="submit" mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple [disabled]="f.invalid || f.pending">{{'signin'}}</button>
-    </div>
-  </form>
-
-  <div>
-    Not registered, <a [routerLink]="['', 'signup']">{{'signup'}}</a>
   </div>
-</div>
-<div style="text-align:center">
-  <div>
-    <button mdl-button mdl-button-type="raised" mdl-colored mdl-ripple (click)="signInWithGithub()" type="button"><mdl-icon>github</mdl-icon></button>
-    <button mdl-button mdl-button-type="raised" mdl-colored mdl-ripple (click)="signInWithGoogle()" type="button">Google</button>
-    <button mdl-button mdl-button-type="raised" mdl-colored mdl-ripple (click)="signInWithTwitter()" type="button">Twitter</button>
-    <button mdl-button mdl-button-type="raised" mdl-colored mdl-ripple (click)="signInWithFacebook()" type="button">Facebook</button>
+  <div class="col-md-6">
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Or ...</h3>
+      </div>
+      <div class="card-block">
+        <div>
+          <button class="btn btn-default btn-lg btn-block" (click)="signInWithGithub()" type="button">
+            <i class="fa fa-github-square" aria-hidden="true"></i> Github
+          </button>
+          <button class="btn btn-default btn-lg btn-block" (click)="signInWithGoogle()" type="button">
+            <i class="fa fa-google-plus-square" aria-hidden="true"></i> Google
+          </button>
+          <button class="btn btn-default btn-lg btn-block" (click)="signInWithTwitter()" type="button">
+            <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter
+          </button>
+          <button class="btn btn-default btn-lg btn-block" (click)="signInWithFacebook()" type="button">
+            <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

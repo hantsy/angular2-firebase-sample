@@ -1,4 +1,6 @@
 {
   "typescript.check.workspaceVersion": true,
-  "typescript.tsdk": "./node_modules/typescript/lib"
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "angulardoc.repoId": "940ecaa7-5598-4bb6-9f48-97ffb3e072a4",
+  "angulardoc.lastSync": 0
 }

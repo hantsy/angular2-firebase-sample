@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MdlModule } from 'angular2-mdl';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 import { ShowAuthedDirective } from './show-authed.directive';
 import { NavbarComponent } from './navbar.component';
@@ -13,7 +14,7 @@ import { FooterComponent } from './footer.component';
 @NgModule({
   imports: [
     RouterModule,
-    MdlModule,
+    NgbModule,
     CommonModule,
     //BrowserModule,
     FormsModule,
@@ -27,7 +28,7 @@ import { FooterComponent } from './footer.component';
   exports: [
     CommonModule,
     //BrowserModule,
-    MdlModule,
+    NgbModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
